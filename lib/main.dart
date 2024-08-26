@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "E-commerce",
-      initialRoute: "sign_in",
+      initialRoute: "splash",
       routes: {
         "splash": (context) => SplashScreen(),
         "verification": (context) => Verification(),

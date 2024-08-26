@@ -20,119 +20,121 @@ class _CheckOutState extends State<CheckOut> {
         onPressed: () {},
         icon: Icon(Icons.arrow_back),
       )),
-      body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: width * 0.04, vertical: height * 0.1),
-        child: Column(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Your Address",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text("Change Address", style: TextStyle(color: Colors.grey)),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Card(
-              child: Container(
-                  width: width * 0.9,
-                  padding: const EdgeInsets.all(20),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "John Doe, +201234569",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      ),
-                      Text(
-                        "Schools street behind the office school,",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      ),
-                      Text(
-                        "Maghdough, Said, London",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      ),
-                    ],
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Shipping Mode",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text("Change Mode", style: TextStyle(color: Colors.grey)),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Card(
-              child: Container(
-                  width: width * 0.9,
-                  padding: const EdgeInsets.all(20),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Flat Rate",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      ),
-                      Text(
-                        "\$20",
-                        style: TextStyle(color: Colors.grey, fontSize: 15),
-                      ),
-                    ],
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Your Cart",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-                Text("View More", style: TextStyle(color: Colors.grey)),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CartScroll(const [
-              {"image": "assets/images/computers.jpg", "title": "Computers"},
-              {
-                "image": "assets/images/phones.jpg",
-                "title": "Phones & Accessories"
-              },
-              {
-                "image": "assets/images/office.jpg",
-                "title": "Office Equipment"
-              },
-            ]),
-            const SizedBox(
-              height: 10,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("Payment Method",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-              ],
-            ),
-            
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(
+              horizontal: width * 0.04, vertical: height * 0.1),
+          child: Column(
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Your Address",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  Text("Change Address", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Card(
+                child: Container(
+                    width: width * 0.9,
+                    padding: const EdgeInsets.all(20),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "John Doe, +201234569",
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        ),
+                        Text(
+                          "Schools street behind the office school,",
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        ),
+                        Text(
+                          "Maghdough, Said, London",
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        ),
+                      ],
+                    )),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Shipping Mode",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  Text("Change Mode", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Card(
+                child: Container(
+                    width: width * 0.9,
+                    padding: const EdgeInsets.all(20),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Flat Rate",
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        ),
+                        Text(
+                          "\$20",
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
+                        ),
+                      ],
+                    )),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Your Cart",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                  Text("View More", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CartScroll(const [
+                {"image": "assets/images/computers.jpg", "title": "Computers"},
+                {
+                  "image": "assets/images/phones.jpg",
+                  "title": "Phones & Accessories"
+                },
+                {
+                  "image": "assets/images/office.jpg",
+                  "title": "Office Equipment"
+                },
+              ]),
+              const SizedBox(
+                height: 10,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Payment Method",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                ],
+              ),
+              
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Container(

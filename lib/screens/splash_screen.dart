@@ -32,7 +32,7 @@ class SplashScreen extends StatelessWidget {
               Text(
                 'E-commerce UI Theme',
                 style: GoogleFonts.dancingScript(
-                  color: Color.fromARGB(255, 148, 123, 235),
+                  color: const Color.fromARGB(255, 148, 123, 235),
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),

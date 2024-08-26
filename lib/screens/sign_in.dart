@@ -1,155 +1,172 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
     double height = MediaQuery.of(context).size.height;
-        double width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: width*0.01, vertical: height*0.07 ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 40,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
+            margin: EdgeInsets.symmetric(
+              horizontal: width * 0.04,
+              vertical: height * 0.07,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: height * 0.1,
+                ),
+                const Text(
                   "Welcome Back!",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  "Login to your existing account",
-                  style: TextStyle(fontSize: 20), // Adjust font size for clarity
+                const Text(
+                  "Log in to your existing account",
+                  style: TextStyle(fontSize: 15),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
+                Center(
+                  child: Image.asset(
                     "assets/images/logo.jpeg",
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
+                    width: 150,
+                    height: 150,
                   ),
-                ],
-              ),
-              Container(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                child: const Text(
-                  "Email Address",
-                  style: TextStyle(fontSize: 20),
                 ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Enter your email",
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  )),
-              Container(
-                padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                child: const Text(
-                  "Password",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                  child: const TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "e.g: *********",
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  )),
-              const SizedBox(height: 10,),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 148, 123, 235),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 100),
-                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero)
-                    ),
-                  child: const Text("Login", style: TextStyle(fontSize: 20),),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Image.asset(
-                      "assets/images/google.jpg",
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  ClipOval(
-                      child: Image.asset("assets/images/facebook.webp",
-                          height: 50, width: 50, fit: BoxFit.cover))
-                ],
-              ),
-              const Row(
-                children: [
-                  SizedBox(width: 20),
+                Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                          "Email address",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 126, 126, 126)),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color.fromARGB(47, 158, 158, 158),
+                                    offset: Offset(1, 3),
+                                    spreadRadius: 2,
+                                    blurRadius: 2)
+                              ]),
+                          child: TextFormField(
+                              controller: emailController,
+                              decoration: const InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.white)),
+                                hintText: "e.g email@example.com",
+                                fillColor: Colors.white,
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Please enter the email";
+                                }
+                              }),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          "Password",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 126, 126, 126)),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Color.fromARGB(47, 158, 158, 158),
+                                    offset: Offset(1, 3),
+                                    spreadRadius: 2,
+                                    blurRadius: 2)
+                              ]),
+                          child: TextFormField(
+                            controller: passwordController,
+                            decoration: const InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white)),
+                              hintText: "e.g *********",
+                              fillColor: Colors.white,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter the password";
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  print("done");
+                                  SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+                                  await prefs.setString(
+                                      "email", emailController.text);
+                                  await prefs.setString(
+                                      "password", passwordController.text);
+                                  await prefs.setBool("is_login", true);
+                                  Navigator.pushReplacementNamed(
+                                      context, "home");
+                                } else {
+                                  print("faild");
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Color.fromARGB(255, 148, 123, 235),
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5)),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 100),
+                              ),
+                              child: const Text("Login"),
+                            )
+                          ],
+                        ),
+                      ],
+                    )),
+                Center(
+                    child: Row(children: [
+                  Text("Already have an account? "),
                   Text(
-                    "Don't have an accout",
-                    style: TextStyle(color: Colors.grey, fontSize: 20),
-                  ),
-                  Text(" Sign up!",
-                      style: TextStyle(color: Color.fromARGB(255, 148, 123, 235), fontSize: 20)), 
-                ],
-              ),
-            ],
-          ),
-        ),
+                    "Sign up",
+                    style: TextStyle(color: Color.fromARGB(255, 148, 123, 235)),
+                  )
+                ]))
+              ],
+            )),
       ),
     );
   }

@@ -181,7 +181,8 @@ class ContactUs extends StatelessWidget {
                       ],
                     ),
                   ],
-                ))
+                )
+                )
           ],
         ),
       ),
