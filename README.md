@@ -1,16 +1,13 @@
-# session_7
+# 🌟 My First Flutter Project: E-Commerce App 🌟
 
-A new Flutter project.
+## 🛍️ Features
 
-## Getting Started
+- **User Authentication**: Implemented sign-in functionality using Shared Preferences to store user data locally.
+- **Product Listings**: Display a variety of products with images, descriptions, and prices.
+- **Responsive Design**: The app is optimized for both mobile and tablet screens.
 
-This project is a starting point for a Flutter application.
+## 📱 Technologies Used
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter**: For building the UI and handling state management.
+- **Dart**: As the programming language.
+- **Shared Preferences**: For local storage of user credentials.

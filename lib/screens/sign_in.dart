@@ -106,11 +106,13 @@ class _SignInState extends State<SignIn> {
                       ),
                       child: TextFormField(
                         controller: passwordController,
+                        obscureText: true,
                         decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white)),
                           hintText: "e.g *********",
                           fillColor: Colors.white,
+                          
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
