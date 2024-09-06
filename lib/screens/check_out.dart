@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:session_7/screens/home.dart';
+import 'package:session_7/globals.dart' as globals;
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -12,6 +13,7 @@ class CheckOut extends StatefulWidget {
 class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
+    globals.setScreenDimensions(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -23,7 +25,7 @@ class _CheckOutState extends State<CheckOut> {
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.symmetric(
-              horizontal: width * 0.04, vertical: height * 0.1),
+              horizontal: width * 0.04),
           child: Column(
             children: [
               const Row(
@@ -132,7 +134,19 @@ class _CheckOutState extends State<CheckOut> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                 ],
               ),
-              
+              SizedBox(height: 10,),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    PaymentMethod("assets/images/a_pay.webp"),
+                    PaymentMethod("assets/images/visa.webp"),
+                    PaymentMethod("assets/images/paypal.webp"),
+                    PaymentMethod("assets/images/master_card.png"),
+                    PaymentMethod("assets/images/g_pay.png")
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -223,3 +237,20 @@ class CartScroll extends StatelessWidget {
     );
   }
 }
+
+Widget PaymentMethod(String imagePath) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20),
+    margin: EdgeInsets.only(right: 5),
+    decoration: BoxDecoration(
+        border: Border.all(
+            color: const Color.fromARGB(255, 148, 123, 235), width: 1
+        ),
+        borderRadius: BorderRadius.circular(10),
+        color: Color.fromARGB(62, 190, 190, 190)),
+    child: Image.asset(
+      imagePath,
+      width: globals.width* 0.15,
+      height: globals.height*0.08,
+    ));
+} 

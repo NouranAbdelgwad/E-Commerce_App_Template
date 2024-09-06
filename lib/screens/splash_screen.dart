@@ -9,14 +9,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Future.delayed(const Duration(seconds: 3), () async{
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      if(prefs.getBool("is_login")!){
+    await Future.delayed(const Duration(seconds: 3));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool("is_login") ?? false; // Default to false if null
+    if (isLoggedIn) {
       Navigator.pushReplacementNamed(context, "layout");
-      } else{
-              Navigator.pushReplacementNamed(context, "login_task");
-
-      }
-    });
+    } else {
+      Navigator.pushReplacementNamed(context, "sign_in");
+    }
+  });
     return Scaffold(
       body: Center(
         child: Column(
